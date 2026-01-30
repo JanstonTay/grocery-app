@@ -1,0 +1,351 @@
+:root {
+    --primary: #2e7d32;
+    --accent: #fbc02d;
+    --bg: #f8f9fa;
+    --text: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    margin-bottom: 100px;
+}
+
+header {
+    background: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+h2 {
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 5%;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+button.add-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Recipes Section */
+.recipe-container {
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    background: #fff;
+    padding: 20px;
+    border-left: 5px solid var(--primary);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Sidebar Cart */
+.sidebar {
+    position: fixed;
+    right: -350px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    z-index: 200;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar.active { right: 0; }
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.minus-button {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: bold;
+}
+
+#cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.sidebar-footer {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.checkout-btn:hover {
+    filter: brightness(0.95);
+}
+
+.qty-controls button {
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-left: 6px;
+    height: 28px;
+}
+
+.qty-controls button:hover {
+    filter: brightness(0.95);
+}
+
+/* Cart +/- buttons: same size */
+.qty-controls button,
+.minus-button,
+.plus-button {
+  width: 28px;
+  height: 28px;
+  padding: 0;                 /* important: remove different padding */
+  border: none;
+  border-radius: 6px;
+  background: #eee;
+  cursor: pointer;
+
+  display: inline-flex;       /* centers the + and - */
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  line-height: 1;
+}
+
+.qty-controls button:hover {
+  filter: brightness(0.95);
+}
+
+/* Sidebar layout fix so footer never gets cut off */
+.sidebar {
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make cart items scroll instead of pushing footer off-screen */
+#cart-items {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;             /* important for flex scrolling */
+  padding-right: 6px;
+}
+
+.sidebar-footer {
+  margin-top: auto;          /* push footer to bottom */
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.qty-controls {
+  display: flex;
+  gap: 1px; /* 👈 smaller spacing between - and + */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;        /* space between icon and text */
+  color: var(--primary);
+}
+
+.logo i {
+  font-size: 1.4rem;
+}
+
+.minus-button,
+.plus-button {
+  margin: 0;        /* important */
+}
+
+.logo-link {
+  text-decoration: none;   /* 👈 removes underline */
+  color: var(--primary);
+}
+
+.sidebar-header button {
+  width: 34px;
+  height: 34px;
+  font-size: 22px;
+  line-height: 1;
+  border: none;
+  border-radius: 8px;
+  background: #eee;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-header button:hover {
+  filter: brightness(0.95);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 20px 24px;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.modal pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  margin: 12px 0;
+}
+
+.modal button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+.hidden {
+  display: none;
+}
